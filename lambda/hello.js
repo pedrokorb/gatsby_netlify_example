@@ -8,7 +8,7 @@ module.exports.handler = async function(event, context, callback) {
   client.transmissions
     .send({
       content: {
-        from: 'pedro.korb@gmail.com',
+        from: 'pedro@email.com',
         subject: "TESTE",
         html: '<html><body><p>Send an email</p></html></body>'
       },
