@@ -93,8 +93,7 @@ export const IndexPageTemplate = ({
                   onClick={
                     () => {
                       fetch("/.netlify/functions/hello")
-                        .then(response => response.json())
-                        .then(console.log)
+                        .then(response => console.log(response))
                     }  
                   }
                 >
