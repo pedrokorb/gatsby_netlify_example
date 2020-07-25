@@ -1,14 +1,25 @@
+const SparkPost = require('sparkpost');
+const client = new SparkPost(process.env.SPARKPOST);
+
+
 // For more info, check https://docs.netlify.com/functions/build-with-javascript
-module.exports.handler = async function(event, context) {
-  const payload = JSON.parse(event.body)
-  console.log("queryStringParameters", event.queryStringParameters)
-  return {
-    // return null to show no errors
-    statusCode: 200, // http status code
-    body: JSON.stringify({
-      msg: event.queryStringParameters
+module.exports.handler = async function(event, context, callback) {
+  console.log(event)
+  client.transmissions
+    .send({
+      content: {
+        from: 'pedro.korb@gmail.com',
+        subject: "TESTE",
+        html: '<html><body><p>Send an email</p></html></body>'
+      },
+      recipients: [{ address: 'pedro.korb@gmail.com' }]
     })
-  }
+    .then(data => {
+      callback(null, {
+        statusCode: 200,
+        body: 'So far so good'
+      })
+    })
 }
 
 // Now you are ready to access this API from anywhere in your Gatsby app! For example, in any event handler or lifecycle method, insert:
