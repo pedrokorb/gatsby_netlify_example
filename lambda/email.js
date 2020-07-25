@@ -22,10 +22,10 @@ exports.handler = function (event, context, callback) {
         subject,
         html: message,
       },
-      recipients: [{ address: 'pedro.korb@gmail.com' }],
+      recipients: [{ address: 'karentatsch@gmail.com' }],
     })
     .then(response => {
-      console.log('Mail has been sent successfully!')
+      console.log('Mail has been sent successfully!', response)
       callback(null, {
         statusCode: successCode,
         headers,
