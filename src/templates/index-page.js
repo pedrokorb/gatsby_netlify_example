@@ -6,6 +6,8 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
+
+
 export const IndexPageTemplate = ({
   image,
   title,
@@ -86,6 +88,20 @@ export const IndexPageTemplate = ({
                     <p>{description}</p>
                   </div>
                 </div>
+
+                <p 
+                  onClick={
+                    () => {
+                      console.log("entrei aqui")
+                      fetch("/.netlify/functions/hello")
+                        .then(response => response.json())
+                        .then(console.log)
+                    }
+                  }
+                >
+                  OI FUNÇÃO
+                </p>
+
                 <Features gridItems={intro.blurbs} />
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
