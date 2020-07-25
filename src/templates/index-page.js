@@ -30,7 +30,6 @@ export const IndexPageTemplate = ({
       if (response.status !== 200) {
         console.log('Something went wrong when sending an email')
       } else {
-        this.handleSuccess()
         console.log('Email sent successfully!')
       }
     })
