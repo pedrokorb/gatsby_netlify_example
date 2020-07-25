@@ -6,7 +6,7 @@ module.exports.handler = async function(event, context) {
     // return null to show no errors
     statusCode: 200, // http status code
     body: JSON.stringify({
-      msg: payload
+      msg: event.queryStringParameters
     })
   }
 }
