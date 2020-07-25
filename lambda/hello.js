@@ -1,11 +1,12 @@
 // For more info, check https://docs.netlify.com/functions/build-with-javascript
 module.exports.handler = async function(event, context) {
+  const payload = JSON.parse(event.body)
   console.log("queryStringParameters", event.queryStringParameters)
   return {
     // return null to show no errors
     statusCode: 200, // http status code
     body: JSON.stringify({
-      msg: "Hello, World! This is better " + event.queryStringParameters
+      msg: payload
     })
   }
 }

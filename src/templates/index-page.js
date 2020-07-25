@@ -91,11 +91,20 @@ export const IndexPageTemplate = ({
 
                 <p 
                   onClick={
-                    () => {
-                      console.log("entrei aqui")
-                      fetch("/.netlify/functions/hello")
-                        .then(response => response.json())
-                        .then(console.log)
+                      (e) => {
+                        e.preventDefault();
+                        let formState = {
+                          name: "Pedro",
+                          email: "pedro.korb@gmai.com",
+                          subject: "TEste",
+                          message: "Testando",
+                        }
+
+                        fetch("/.netlify/functions/hello", {
+                            body: JSON.stringify(formState),
+                        })
+                          .then(response => response.json())
+                          .then(console.log)
                     }
                   }
                 >
