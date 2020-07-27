@@ -20,7 +20,7 @@ export const IndexPageTemplate = ({
   const submitForm = async (e) => {
     e.preventDefault();
 
-    formState = {
+    let formState = {
       name: "Pedro Henrique Korb",
       email: "pedro.korb@gmail.com",
       subject: "Teste",
