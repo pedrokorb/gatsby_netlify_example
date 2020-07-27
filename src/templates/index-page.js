@@ -34,14 +34,15 @@ export const IndexPageTemplate = ({
       })
 
       if (!response.ok) {
+        console.log(response)
         console.log("not 200 response")
         return
       }
 
-      console.log("ALL ok")
+      console.log(response,"ALL ok")
 
     } catch (e) {
-      console.log(e)
+      console.log(response, e)
     }
   }
 
