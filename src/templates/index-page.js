@@ -17,23 +17,32 @@ export const IndexPageTemplate = ({
   intro,
 }) => {
 
-  const handleSubmit = e => {
-    console.log("oi teste")
-    const name = "pedro Korb"
-    const email = "pedro.korb@gmail.com"
-    const subject = "TESTE"
-    const message = "Testando email"
+  const submitForm = async (e) => {
+    e.preventDefault();
 
-    const data = { name, email, subject, message }
-    //config.emailEndpoint is set to ./functions/send-email
-    axios.post('/.netlify/functions/email', JSON.stringify(data)).then(response => {
-      if (response.status !== 200) {
-        console.log('Something went wrong when sending an email')
-      } else {
-        console.log('Email sent successfully!')
+    formState = {
+      name: "Pedro Henrique Korb",
+      email: "pedro.korb@gmail.com",
+      subject: "Teste",
+      message: "Teste",
+    }
+
+    try {
+      const response = await fetch("/.netlify/functions/sendemail", {
+        method: "POST",
+        body: JSON.stringify(formState),
+      })
+
+      if (!response.ok) {
+        console.log("not 200 response")
+        return
       }
-    })
-    e.preventDefault()
+
+      console.log("ALL ok")
+
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -110,7 +119,7 @@ export const IndexPageTemplate = ({
                   </div>
 
                   <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-                      <button type="submit" onClick={handleSubmit}>
+                      <button type="submit" onClick={submitForm}>
                         Send
                       </button>
                   </form>
