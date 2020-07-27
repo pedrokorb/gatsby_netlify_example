@@ -18,14 +18,14 @@ export const IndexPageTemplate = ({
 }) => {
 
   const submitForm = async (e) => {
-    e.preventDefault();
-
     let formState = {
       name: "Pedro Henrique Korb",
       email: "pedro.korb@gmail.com",
       subject: "Teste",
       message: "Teste",
     }
+    
+    e.preventDefault();
 
     try {
       const response = await fetch("/.netlify/functions/sendemail", {
